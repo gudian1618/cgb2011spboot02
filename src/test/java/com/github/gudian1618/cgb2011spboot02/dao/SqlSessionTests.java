@@ -22,7 +22,14 @@ public class SqlSessionTests {
     public void testDeleteById() {
         // 1.创建sqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        System.out.println(sqlSession.getConnection());
+        // System.out.println(sqlSession.getConnection());
+        // 2.执行会话操作
+        GoodsDao goodsDao = sqlSession.getMapper(GoodsDao.class);
+        int rows = goodsDao.deleteById(100);
+        System.out.println("rows=" + rows);
+        sqlSession.commit();
+        // 3.释放资源
+        sqlSession.close();
 
     }
 

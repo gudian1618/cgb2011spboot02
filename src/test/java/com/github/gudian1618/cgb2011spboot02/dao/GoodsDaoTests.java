@@ -23,4 +23,10 @@ public class GoodsDaoTests {
         System.out.println("rows=" + rows);
     }
 
+    @Test
+    void testDeleteObjects() {
+        int rows = goodsDao.deleteObjects(1000, 2000);
+        System.out.println("rows=" + rows);
+    }
+
 }

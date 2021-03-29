@@ -2,6 +2,7 @@ package com.github.gudian1618.cgb2011spboot02.dao;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author gudian1618
@@ -15,6 +16,15 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface GoodsDao {
+
+    /**
+     * 基于多个id删除商品信息
+     * 方法参数是可变参数或数组时,在sql映射中可以使用 array 变量接收参数数据
+     * 假如不希望使用array,想另外自定义参数变量名,可以借助 @Param 注解在接口方法中对参数进行描述
+     * @param ids
+     * @return
+     */
+    int deleteObjects(@Param("ids") Integer... ids);
 
     /**
      * 基于id执行商品数据的删除
