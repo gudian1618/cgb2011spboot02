@@ -1,8 +1,12 @@
 package com.github.gudian1618.cgb2011spboot02.dao;
 
+import com.github.gudian1618.cgb2011spboot02.pojo.Goods;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @author gudian1618
@@ -16,6 +20,13 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface GoodsDao {
+
+    /**
+     * 查询所有商品信息
+     * @return
+     */
+    @Select("select id,name,remark,createdTime from tb_goods")
+    List<Goods> findObjects();
 
     /**
      * 基于多个id删除商品信息
