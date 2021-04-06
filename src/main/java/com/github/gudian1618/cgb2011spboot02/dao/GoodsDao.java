@@ -1,10 +1,7 @@
 package com.github.gudian1618.cgb2011spboot02.dao;
 
 import com.github.gudian1618.cgb2011spboot02.pojo.Goods;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -21,6 +18,9 @@ import java.util.List;
 @Mapper
 public interface GoodsDao {
 
+    @Insert("insert into tb_goods (name,remark,createdTime) values (#{name},#{remark},now())")
+    int insertGoods(Goods entity);
+
     /**
      * 查询所有商品信息
      */
@@ -32,11 +32,13 @@ public interface GoodsDao {
      * 方法参数是可变参数或数组时,在sql映射中可以使用 array 变量接收参数数据
      * 假如不希望使用array,想另外自定义参数变量名,可以借助 @Param 注解在接口方法中对参数进行描述
      * @param ids
+     * @return
      */
     int deleteObjects(@Param("ids") Integer... ids);
 
     /**
      * 基于id执行商品数据的删除
+     * @return
      */
     @Delete("delete from tb_goods where id=#{id}")
     int deleteById(Long id);

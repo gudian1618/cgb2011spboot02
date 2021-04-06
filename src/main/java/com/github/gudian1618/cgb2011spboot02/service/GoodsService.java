@@ -16,4 +16,6 @@ public interface GoodsService {
 
     int deleteById(Long id);
 
+    int saveGoods(Goods entity);
+
 }

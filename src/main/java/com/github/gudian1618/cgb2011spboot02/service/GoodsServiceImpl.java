@@ -36,6 +36,14 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public int saveGoods(Goods entity) {
+        // TODO
+        int rows = goodsDao.insertGoods(entity);
+        // TODO
+        return rows;
+    }
+
+    @Override
     public List<Goods> findGoods() {
         long start = System.currentTimeMillis();
         List<Goods> list = goodsDao.findObjects();

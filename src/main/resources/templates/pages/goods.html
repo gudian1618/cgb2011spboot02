@@ -3,26 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>goods</title>
+    <style type="text/css">
+        ul li {list-style-type:none; margin: 5px}
+    </style>
 </head>
 <body>
 <h1>This is Goods Page</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Remark</th>
-        <th>CreatedTime</th>
-        <th>Operation</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="g: ${goods}">
-        <td th:text="${g.name}"></td>
-        <td th:text="${g.remark}"></td>
-        <td th:text="${#dates.format(g.createdTime,'yyyy-MM-dd HH:mm')}"></td>
-        <td><a th:href="@{/goods/doDeleteById(id=${g.id})}">delete</a></td>
-    </tr>
-    </tbody>
-</table>
+<div>
+    <fieldset>
+        <legend>商品添加</legend>
+        <form action="/goods/doSaveGoods" method="post">
+            <ul>
+                <li>商品名称:</li>
+                <li><input type="text" name="name"></li>
+                <li>商品备注:</li>
+                <li><textarea rows="5" cols="50" name="remark"></textarea></li>
+                <li><input type="submit" value="save"></li>
+            </ul>
+
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>商品列表代码</legend>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Remark</th>
+                <th>CreatedTime</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="g: ${goods}">
+                <td th:text="${g.name}"></td>
+                <td th:text="${g.remark}"></td>
+                <td th:text="${#dates.format(g.createdTime,'yyyy-MM-dd HH:mm')}"></td>
+                <td><a th:href="@{/goods/doDeleteById(id=${g.id})}">delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
 </body>
 </html>
