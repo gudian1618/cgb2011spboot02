@@ -14,4 +14,6 @@ public interface GoodsService {
 
     List<Goods> findGoods();
 
+    int deleteById(Long id);
+
 }

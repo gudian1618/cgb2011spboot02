@@ -25,7 +25,7 @@ public class SqlSessionTests {
         // System.out.println(sqlSession.getConnection());
         // 2.执行会话操作
         GoodsDao goodsDao = sqlSession.getMapper(GoodsDao.class);
-        int rows = goodsDao.deleteById(100);
+        int rows = goodsDao.deleteById(100L);
         System.out.println("rows=" + rows);
         sqlSession.commit();
         // 3.释放资源

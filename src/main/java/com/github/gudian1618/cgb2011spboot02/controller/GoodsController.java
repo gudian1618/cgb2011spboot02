@@ -22,6 +22,12 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @RequestMapping("doDeleteById")
+    public String doDeleteById(Long id) {
+        goodsService.deleteById(id);
+        return "redirect:doGoodsUI";
+    }
+
     @RequestMapping("doGoodsUI")
     public String doGoodsUI(Model model) {
 

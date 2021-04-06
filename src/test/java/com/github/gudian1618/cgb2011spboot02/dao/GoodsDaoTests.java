@@ -19,7 +19,7 @@ public class GoodsDaoTests {
 
     @Test
     void testDeleteById() {
-        int rows = goodsDao.deleteById(100);
+        int rows = goodsDao.deleteById(100L );
         System.out.println("rows=" + rows);
     }
 

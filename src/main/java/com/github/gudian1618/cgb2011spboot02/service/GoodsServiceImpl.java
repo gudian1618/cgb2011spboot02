@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author gudian1618
@@ -20,6 +21,19 @@ public class GoodsServiceImpl implements GoodsService {
     // has a
     @Autowired
     private GoodsDao goodsDao;
+
+    @Override
+    public int deleteById(Long id) {
+        int rows = 0;
+        if (id == null || id < 1) {
+            throw new IllegalArgumentException("id值无效");
+        }
+        rows = goodsDao.deleteById(id);
+        if (rows==0) {
+            throw new NoSuchElementException("记录可能已经不存在了");
+        }
+        return rows;
+    }
 
     @Override
     public List<Goods> findGoods() {

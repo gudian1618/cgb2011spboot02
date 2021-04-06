@@ -23,7 +23,6 @@ public interface GoodsDao {
 
     /**
      * 查询所有商品信息
-     * @return
      */
     @Select("select id,name,remark,createdTime from tb_goods")
     List<Goods> findObjects();
@@ -33,7 +32,6 @@ public interface GoodsDao {
      * 方法参数是可变参数或数组时,在sql映射中可以使用 array 变量接收参数数据
      * 假如不希望使用array,想另外自定义参数变量名,可以借助 @Param 注解在接口方法中对参数进行描述
      * @param ids
-     * @return
      */
     int deleteObjects(@Param("ids") Integer... ids);
 
@@ -41,6 +39,6 @@ public interface GoodsDao {
      * 基于id执行商品数据的删除
      */
     @Delete("delete from tb_goods where id=#{id}")
-    int deleteById(Integer id);
+    int deleteById(Long id);
 
 }
